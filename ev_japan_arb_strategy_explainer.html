@@ -348,10 +348,15 @@ March 2026 reflected two position-specific events unrelated to market direction,
     This is not an accident of timing. When a company issues a CB, its primary concerns are the <strong>coupon</strong> (zero coupon financing is extremely attractive to Japanese corporates) and the <strong>conversion premium</strong> (its impact on potential dilution). The implied volatility is a secondary consideration — it is whatever the market will accept to clear the deal at the desired coupon and premium. This is fundamentally different from bank-issued options, where the bank must price IV above expected realised volatility to hedge its own risk. The corporate issuer has no such constraint. The result: CB-embedded options are <strong>structurally cheap relative to subsequently realised volatility</strong>. The strategy does not need volatility to rise; it simply needs realised volatility to remain broadly where it is. If it rises further, so much the better. And given the margin of cheapness (35% paid vs 60% realised for Taiyo Yuden), there is meaningful room for vol to fall before the edge disappears.
   </div>
 
-  <div style="display:flex;gap:0;margin:28px 0 0;border-bottom:2px solid var(--rule)">
-    <div id="mtab-mar25" class="mo-tab" onclick="showMonth('mar25',this)" style="font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:9px 20px;cursor:pointer;border-bottom:2px solid var(--ink);margin-bottom:-2px;color:var(--ink)">Mar 2025 · Sideways</div>
-    <div id="mtab-apr25" class="mo-tab" onclick="showMonth('apr25',this)" style="font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:9px 20px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;color:var(--ink-soft)">Apr 2025 · Down</div>
-    <div id="mtab-may25" class="mo-tab" onclick="showMonth('may25',this)" style="font-family:'DM Mono',monospace;font-size:9.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:9px 20px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;color:var(--ink-soft)">May 2025 · Up</div>
+  <div style="margin:28px 0 0">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-soft);margin-bottom:10px;letter-spacing:.04em">
+      &#9654; <strong style="color:var(--ink)">Select a month to explore</strong> — click any tab below to see the trade log and chart
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <div id="mtab-mar25" class="mo-tab" onclick="showMonth('mar25',this)" style="font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:11px 22px;cursor:pointer;border-radius:4px;border:2px solid var(--ink);background:var(--ink);color:white;transition:all .15s">Mar 2025 · Sideways</div>
+      <div id="mtab-apr25" class="mo-tab" onclick="showMonth('apr25',this)" style="font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:11px 22px;cursor:pointer;border-radius:4px;border:2px solid var(--rule);background:white;color:var(--ink-soft);transition:all .15s">Apr 2025 · Down &#9650;</div>
+      <div id="mtab-may25" class="mo-tab" onclick="showMonth('may25',this)" style="font-family:'DM Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:11px 22px;cursor:pointer;border-radius:4px;border:2px solid var(--rule);background:white;color:var(--ink-soft);transition:all .15s">May 2025 · Up &#9650;</div>
+    </div>
   </div>
   <div id="monthDetail" style="margin-top:20px"></div>
 
@@ -579,8 +584,14 @@ function showSection(name, el) {
 }
 
 function showMonth(key, el) {
-  document.querySelectorAll('.mo-tab').forEach(t=>{ t.style.borderBottomColor='transparent'; t.style.color='var(--ink-soft)'; });
-  el.style.borderBottomColor='var(--ink)'; el.style.color='var(--ink)';
+  document.querySelectorAll('.mo-tab').forEach(t=>{
+    t.style.background='white';
+    t.style.color='var(--ink-soft)';
+    t.style.borderColor='var(--rule)';
+  });
+  el.style.background='var(--ink)';
+  el.style.color='white';
+  el.style.borderColor='var(--ink)';
   loadMonth(key);
 }
 
